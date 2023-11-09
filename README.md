@@ -1,4 +1,5 @@
 # Terranetes
 This is a sample project aimed to automatically deploy k8s cluster with terraform. It will host a sample web-service with Nginx as the LB and reverse proxy. 
 
-## Pre-reqs
+## Notes & Pre-reqs
+This sample project is designed for learning purposes, and we will not scale up anything in cloud services. As such, we will leverage minikube to host the k8s cluster on a local linux server.
