@@ -1,5 +1,6 @@
 provider "kubernetes" {
-  config_context_cluster   = minikube
+  config_path           = "~/.kube/config"  # Adjust the path if needed
+  config_context_cluster = "minikube"
 }
 
 resource "kubernetes_deployment" "nginx" {
@@ -8,7 +9,7 @@ resource "kubernetes_deployment" "nginx" {
   }
 
   spec {
-    replicas = 2
+    replicas = 10
 
     selector {
       match_labels = {
