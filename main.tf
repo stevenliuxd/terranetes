@@ -3,13 +3,13 @@ provider "kubernetes" {
   config_context_cluster = "minikube"
 }
 
-resource "kubernetes_deployment" "nginx" {
+resource "kubernetes_deployment_v1" "nginx" {
   metadata {
     name = "nginx-deployment"
   }
 
   spec {
-    replicas = 3
+    replicas = 2
 
     selector {
       match_labels = {
@@ -34,14 +34,14 @@ resource "kubernetes_deployment" "nginx" {
   }
 }
 
-resource "kubernetes_service" "nginx" {
+resource "kubernetes_service_v1" "nginx" {
   metadata {
     name = "nginx-service"
   }
 
   spec {
     selector = {
-      app = kubernetes_deployment.nginx.spec[0].template[0].metadata[0].labels.app
+      app = kubernetes_deployment_v1.nginx.spec[0].template[0].metadata[0].labels.app
     }
 
     port {
